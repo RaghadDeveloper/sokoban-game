@@ -1,0 +1,41 @@
+body {
+  text-align: center;
+  background-color: #222;
+  color: white;
+  font-family: sans-serif;
+
+  > div {
+    display: flex;
+    margin: 0 auto;
+    justify-content: space-between;
+    max-width: 640px;
+  }
+}
+
+canvas {
+  width: 640px;
+  height: 480px;
+  background-color: #444;
+  margin-top: 20px;
+  image-rendering: pixelated;
+}
+
+#levelButtons {
+  display: flex;
+  gap: 1rem;
+}
+
+#levelButtons button {
+  background-color: orange;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  width: 40px;
+  height: 40px;
+
+  &:hover {
+    background-color: rgb(255, 193, 77);
+  }
+}
