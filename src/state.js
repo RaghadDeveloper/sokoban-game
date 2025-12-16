@@ -124,4 +124,14 @@ export class State {
 
     return results;
   }
+
+  hash() {
+    return (
+      this.grid.map((row) => row.join("")).join("") +
+      "|" +
+      this.playerX +
+      "," +
+      this.playerY
+    );
+  }
 }

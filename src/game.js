@@ -1,5 +1,6 @@
 import { Renderer } from "./renderer.js";
 import { State } from "./state.js";
+import { getDirections, solveDFS } from "./dfs.js";
 
 export class Game {
   constructor(canvas) {
@@ -60,5 +61,31 @@ export class Game {
       this.state = State.fromGrid(this.levels[this.levelIndex]);
       this.draw();
     }
+  }
+
+  solveWithDFS() {
+    console.log("Solving with DFS...");
+
+    const solution = solveDFS(this.state);
+    console.log(solution);
+
+    if (!solution) {
+      alert("No solution found with DFS");
+      return;
+    }
+
+    const directions = getDirections(solution);
+    console.log("DFS solution moves:", directions);
+
+    let i = 0;
+    const interval = setInterval(() => {
+      if (i >= solution.length) {
+        clearInterval(interval);
+        return;
+      }
+      this.state = solution[i];
+      this.draw();
+      i++;
+    }, 120);
   }
 }

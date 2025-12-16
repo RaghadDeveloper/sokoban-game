@@ -5,6 +5,10 @@ const canvas = document.getElementById("gameCanvas");
 const levelButtonsContainer = document.getElementById("levelButtons");
 const game = new Game(canvas);
 
+document.getElementById("dfsBtn").addEventListener("click", () => {
+  game.solveWithDFS();
+});
+
 async function initializeGame() {
   try {
     const levels = await loadLevels();
