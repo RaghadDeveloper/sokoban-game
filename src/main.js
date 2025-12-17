@@ -9,6 +9,10 @@ document.getElementById("dfsBtn").addEventListener("click", () => {
   game.solveWithDFS();
 });
 
+document.getElementById("heuristicBtn").addEventListener("click", () => {
+  game.solveWithHeuristic();
+});
+
 async function initializeGame() {
   try {
     const levels = await loadLevels();

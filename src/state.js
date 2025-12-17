@@ -134,4 +134,31 @@ export class State {
       this.playerY
     );
   }
+  getBoxes() {
+    const boxes = [];
+
+    for (let y = 0; y < this.grid.length; y++) {
+      for (let x = 0; x < this.grid[y].length; x++) {
+        if (this.grid[y][x] === box) {
+          boxes.push({ x, y });
+        }
+      }
+    }
+
+    return boxes;
+  }
+
+  getGoals() {
+    const goals = [];
+
+    for (let y = 0; y < this.grid.length; y++) {
+      for (let x = 0; x < this.grid[y].length; x++) {
+        if (this.grid[y][x] === goal) {
+          goals.push({ x, y });
+        }
+      }
+    }
+
+    return goals;
+  }
 }

@@ -1,6 +1,8 @@
 import { Renderer } from "./renderer.js";
 import { State } from "./state.js";
-import { getDirections, solveDFS } from "./dfs.js";
+import { solveDFS } from "./dfs.js";
+import { solveHeuristic } from "./heuristic.js";
+import { getDirections } from "./utils.js";
 
 export class Game {
   constructor(canvas) {
@@ -67,7 +69,6 @@ export class Game {
     console.log("Solving with DFS...");
 
     const solution = solveDFS(this.state);
-    console.log(solution);
 
     if (!solution) {
       alert("No solution found with DFS");
@@ -76,6 +77,31 @@ export class Game {
 
     const directions = getDirections(solution);
     console.log("DFS solution moves:", directions);
+
+    let i = 0;
+    const interval = setInterval(() => {
+      if (i >= solution.length) {
+        clearInterval(interval);
+        return;
+      }
+      this.state = solution[i];
+      this.draw();
+      i++;
+    }, 120);
+  }
+
+  solveWithHeuristic() {
+    console.log("Solving with heuristic...");
+
+    const solution = solveHeuristic(this.state);
+
+    if (!solution) {
+      alert("No solution found with heuristic");
+      return;
+    }
+
+    const directions = getDirections(solution);
+    console.log("Heusistic solution moves:", directions);
 
     let i = 0;
     const interval = setInterval(() => {

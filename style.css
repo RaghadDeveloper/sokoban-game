@@ -4,11 +4,12 @@ body {
   color: white;
   font-family: sans-serif;
 
-  > div {
+  div {
     display: flex;
     margin: 0 auto;
     justify-content: space-between;
     max-width: 640px;
+    gap: 8px;
   }
 }
 
